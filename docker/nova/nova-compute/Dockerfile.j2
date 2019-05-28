@@ -117,6 +117,11 @@ RUN mkdir -p /etc/ceph
 
     {% endif %}
 
+RUN pip install http://10.10.101.3/images/configshell_fb-1.1.25-py2-none-any.whl http://10.10.101.3/images/pyudev-0.21.0-py2-none-any.whl http://10.10.101.3/images/rtslib_fb-2.1.69-py2-none-any.whl && \
+    wget http://10.10.101.3/images/targetcli-2.1.fb37-1.ns7.1.noarch.rpm && \
+    rpm -ivh --nodeps targetcli-2.1.fb37-1.ns7.1.noarch.rpm && \
+    rm targetcli-2.1.fb37-1.ns7.1.noarch.rpm
+
 {{ macros.install_packages(nova_compute_packages | customizable("packages")) }}
 
 {% set nova_compute_pip_packages = [

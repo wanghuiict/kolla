@@ -411,6 +411,17 @@ COPY curlrc /root/.curlrc
 RUN curl -sSL https://github.com/Yelp/dumb-init/releases/download/v1.2.2/dumb-init_1.2.2_{{debian_arch}} -o /usr/local/bin/dumb-init \
     && chmod +x /usr/local/bin/dumb-init
 
+{% elif base_arch == 'sw_64' %}
+
+RUN yum install -y git glibc-static gcc make procps-ng && \
+  git clone https://github.com/Yelp/dumb-init.git && \
+  pushd dumb-init/ && \
+  make && \
+  cp dumb-init /usr/local/bin/ && \
+  popd && \
+  rm -rf dumb-init/ && \
+  yum remove -y gcc git glibc-static make binutils cpp glibc-devel isl less libedit libgnome-keyring libgomp libmpc mpfr openssh openssh-clients perl-Error perl-Git perl-TermReadKey rsync 
+
 {% else %}
 
 {{ macros.install_packages(base_compiler_packages) }}

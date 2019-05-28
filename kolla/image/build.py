@@ -529,7 +529,7 @@ class BuildTask(DockerTask):
                 tar.add(items_path, arcname=arcname)
             return len(os.listdir(items_path))
 
-        self.logger.debug('Processing')
+        self.logger.info('Processing >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>')
 
         if image.status == STATUS_SKIPPED:
             self.logger.info('Skipping %s' % image.name)
@@ -611,7 +611,7 @@ class BuildTask(DockerTask):
             self.logger.exception('Unknown error when building')
         else:
             image.status = STATUS_BUILT
-            self.logger.info('Built')
+            self.logger.info('Built <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<')
 
     def squash(self):
         image_tag = self.image.canonical_name
@@ -678,6 +678,7 @@ class KollaWorker(object):
         self.registry = conf.registry
         if self.registry:
             self.namespace = self.registry + '/' + conf.namespace
+            print('**************** KollaWorker namespace %s'%self.namespace)
         else:
             self.namespace = conf.namespace
         self.base = conf.base
@@ -697,7 +698,7 @@ class KollaWorker(object):
                              conf.rpm_setup_config if repo_file is not None])
         self.rpm_setup = self.build_rpm_setup(rpm_setup_config)
 
-        rh_base = ['centos', 'oraclelinux', 'rhel']
+        rh_base = ['centos', 'oraclelinux', 'rhel', 'neokylin']
         rh_type = ['source', 'binary', 'rdo', 'rhos']
         deb_base = ['ubuntu', 'debian']
         deb_type = ['source', 'binary']
@@ -1024,18 +1025,21 @@ class KollaWorker(object):
                     continue
                 if re.search(patterns, image.name):
                     image.status = STATUS_MATCHED
+                    LOG.debug('Image %s matched regex', image.name)
                     while (image.parent is not None and
                            image.parent.status not in (STATUS_MATCHED,
                                                        STATUS_SKIPPED)):
                         image = image.parent
                         if self.conf.skip_parents:
                             image.status = STATUS_SKIPPED
+                            LOG.debug('Image %s skipped by skip-parents option)', image.name)
                         elif (self.conf.skip_existing and
                               image.in_docker_cache()):
                             image.status = STATUS_SKIPPED
+                            LOG.debug('Image %s skipped by skip-existing option', image.name)
                         else:
                             image.status = STATUS_MATCHED
-                        LOG.debug('Image %s matched regex', image.name)
+                            LOG.debug('Image %s matched regex', image.name)
                 else:
                     image.status = STATUS_UNMATCHED
         else:
@@ -1218,6 +1222,7 @@ class KollaWorker(object):
 
             self.images.append(image)
 
+
     def save_dependency(self, to_file):
         try:
             import graphviz
@@ -1300,7 +1305,7 @@ class KollaWorker(object):
                 # were not matched in the first place... (not worth the
                 # effort to run them, if they won't be used anyway).
                 continue
-            if image.parent is None:
+            if self.conf.skip_existing or image.parent is None:
                 queue.put(BuildTask(self.conf, image, push_queue))
                 LOG.info('Added image %s to queue', image.name)
 
@@ -1370,12 +1375,15 @@ def run_build():
                 worker.start()
                 workers.append(worker)
 
+            LOG.info('wanghuiict debug: %s' % workers)
+
             for x in six.moves.range(conf.push_threads):
                 worker = WorkerThread(conf, push_queue)
                 worker.setDaemon(True)
                 worker.start()
                 workers.append(worker)
 
+            LOG.info('wanghuiict debug: %s' % workers)
             # sleep until queue is empty
             while queue.unfinished_tasks or push_queue.unfinished_tasks:
                 time.sleep(3)

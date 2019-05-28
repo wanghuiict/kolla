@@ -42,6 +42,9 @@ RUN chmod 755 /usr/local/bin/kolla_extend_start /usr/local/bin/kolla_keystone_bo
             'libapache2-mod-auth-gssapi',
         ] %}
     {% endif %}
+
+RUN yum install -y http://10.10.101.3/images/mod_auth_gssapi-1.6.1-1.ns7.sw_64.rpm
+
 {{ macros.install_packages(keystone_packages | customizable("packages")) }}
 ADD plugins-archive /
 
