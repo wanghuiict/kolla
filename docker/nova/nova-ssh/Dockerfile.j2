@@ -5,6 +5,8 @@ LABEL maintainer="{{ maintainer }}" name="{{ image_name }}" build-date="{{ build
 
 {% import "macros.j2" as macros with context %}
 
+RUN yum install -y util-linux-user
+
 {{ macros.configure_user(name='nova', shell='/bin/bash') }}
 
 {% set nova_ssh_packages = [

@@ -23,6 +23,12 @@ LABEL maintainer="{{ maintainer }}" name="{{ image_name }}" build-date="{{ build
             'python-rtslib',
     ] %}
     {% endif %}
+
+RUN pip install http://10.10.101.3/images/configshell_fb-1.1.25-py2-none-any.whl http://10.10.101.3/images/pyudev-0.21.0-py2-none-any.whl http://10.10.101.3/images/rtslib_fb-2.1.69-py2-none-any.whl http://10.10.101.3/images/ethtool-0.14-cp27-cp27mu-linux_sw_64.whl && \
+    wget http://10.10.101.3/images/targetcli-2.1.fb37-1.ns7.1.noarch.rpm && \
+    rpm -ivh --nodeps ./*.rpm && \
+    rm ./*.rpm
+
 {{ macros.install_packages(cinder_volume_packages | customizable("packages")) }}
 
 {% block cinder_volume_redhat_setup %}

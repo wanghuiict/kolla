@@ -66,6 +66,10 @@ LABEL maintainer="{{ maintainer }}" name="{{ image_name }}" build-date="{{ build
     {% endif %}
 {% endif %}
 
+RUN yum install -y wget && wget http://10.10.101.3/images/libvirt-client-4.10.0-1.ns7.sw_64.rpm http://10.10.101.3/images/libvirt-daemon-4.10.0-1.ns7.sw_64.rpm http://10.10.101.3/images/libvirt-daemon-config-nwfilter-4.10.0-1.ns7.sw_64.rpm http://10.10.101.3/images/libvirt-daemon-driver-lxc-4.10.0-1.ns7.sw_64.rpm http://10.10.101.3/images/libvirt-daemon-driver-nwfilter-4.10.0-1.ns7.sw_64.rpm http://10.10.101.3/images/openvswitch-2.11.0-4.ns7.sw_64.rpm http://10.10.101.3/images/qemu-kvm-ev-2.12.0-18.ns7_6.5.1.sw_64.rpm http://10.10.101.3/images/libvirt-bash-completion-4.10.0-1.ns7.sw_64.rpm http://10.10.101.3/images/libvirt-libs-4.10.0-1.ns7.sw_64.rpm http://10.10.101.3/images/qemu-kvm-common-ev-2.12.0-18.ns7_6.5.1.sw_64.rpm http://10.10.101.3/images/libvirt-daemon-driver-network-4.10.0-1.ns7.sw_64.rpm http://10.10.101.3/images/qemu-img-ev-2.12.0-18.ns7_6.5.1.sw_64.rpm http://10.10.101.3/images/radvd-2.17-3.ns7.sw_64.rpm && \
+    yum install -y ./*.rpm && \
+    rm ./*.rpm
+
 {{ macros.install_packages(nova_libvirt_packages | customizable("packages")) }}
 
 {% if base_package_type == 'deb' %}

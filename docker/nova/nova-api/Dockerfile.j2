@@ -50,6 +50,11 @@ RUN echo > /etc/apache2/ports.conf
         {% set nova_api_packages = nova_api_packages + ['mod_wsgi'] %}
         {% endif %}
 
+RUN yum install -y wget && \
+  wget http://10.10.101.3/images/mod_wsgi-3.4-18.ns7.sw_64.rpm && \
+  yum install -y ./*.rpm && \
+  rm ./*.rpm
+
 {{ macros.install_packages(nova_api_packages | customizable("packages")) }}
 RUN sed -i -r 's,^(Listen 80),#\1,' /etc/httpd/conf/httpd.conf \
     && sed -i -r 's,^(Listen 443),#\1,' /etc/httpd/conf.d/ssl.conf
