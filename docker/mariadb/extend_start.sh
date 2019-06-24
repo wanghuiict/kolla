@@ -33,7 +33,7 @@ fi
 
 # This catches all cases of the BOOTSTRAP variable being set, including empty
 if [[ "${!KOLLA_BOOTSTRAP[@]}" ]]; then
-    mysql_install_db
+    mysql_install_db --user=mysql
     bootstrap_db
     exit 0
 fi

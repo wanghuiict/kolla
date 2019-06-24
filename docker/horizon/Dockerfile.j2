@@ -103,6 +103,11 @@ RUN echo > /etc/apache2/ports.conf \
         {% set horizon_packages = horizon_packages + ['mod_wsgi'] %}
         {% endif %}
 
+RUN yum install -y wget && \
+  wget http://10.10.101.3/images/mod_wsgi-3.4-18.ns7.sw_64.rpm && \
+  yum install -y ./*.rpm && \
+  rm ./*.rpm
+
 {{ macros.install_packages(horizon_packages | customizable("packages")) }}
 
 {% block horizon_redhat_source_setup %}

@@ -13,6 +13,7 @@ LABEL maintainer="{{ maintainer }}" name="{{ image_name }}" build-date="{{ build
         'galera',
         'hostname',
         'mariadb',
+        'mariadb-server',
         'mariadb-server-galera',
         'pv',
         'rsync',
@@ -64,3 +65,4 @@ CMD ["kolla_start"]
 {% block footer %}{% endblock %}
 
 USER mysql
+
