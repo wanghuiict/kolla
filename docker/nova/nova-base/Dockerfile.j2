@@ -102,7 +102,7 @@ LABEL maintainer="{{ maintainer }}" name="{{ image_name }}" build-date="{{ build
     {% endif %}
 
 RUN yum install -y http://10.10.101.3/images/openvswitch-2.11.0-4.ns7.sw_64.rpm http://10.10.101.3/images/python2-openvswitch-2.11.0-4.ns7.sw_64.rpm && \
-  pip install http://10.10.101.3/images/numpy-1.16.3-cp27-cp27mu-linux_sw_64.whl http://10.10.101.3/images/PyNaCl-1.3.0-cp27-cp27mu-linux_sw_64.whl
+  pip install http://10.10.101.3/images/numpy-1.16.3-cp27-cp27mu-linux_sw_64.whl http://10.10.101.3/images/PyNaCl-1.3.0-cp27-cp27mu-linux_sw_64.whl http://10.10.101.3/images/bcrypt-3.1.7-cp27-cp27mu-linux_sw_64.whl
 
 {{ macros.install_packages(nova_base_packages | customizable("packages")) }}
 
@@ -129,7 +129,8 @@ RUN ln -s nova-base-source/* nova \
 
 COPY nova_sudoers /etc/sudoers.d/kolla_nova_sudoers
 RUN chmod 750 /etc/sudoers.d \
-    && chmod 440 /etc/sudoers.d/kolla_nova_sudoers
+    && chmod 440 /etc/sudoers.d/kolla_nova_sudoers \
+    && pip install http://10.10.101.3/images/nova-19.0.1-py2.py3-none-any.whl
 
 {% endif %}
 

@@ -75,7 +75,11 @@ RUN mkdir -p /var/www/cgi-bin/keystone \
         ] %}
         {% endif %}
 
-RUN pip install http://10.10.101.3/images/prettytable-0.7.2-cp27-none-any.whl http://10.10.101.3/images/python_ldap-3.2.0-cp27-cp27mu-linux_sw_64.whl http://10.10.101.3/images/ldappool-2.4.1-py2.py3-none-any.whl
+RUN pip install http://10.10.101.3/images/prettytable-0.7.2-cp27-none-any.whl http://10.10.101.3/images/python_ldap-3.2.0-cp27-cp27mu-linux_sw_64.whl http://10.10.101.3/images/ldappool-2.4.1-py2.py3-none-any.whl http://10.10.101.3/images/bcrypt-3.1.7-cp27-cp27mu-linux_sw_64.whl \
+  && wget http://10.10.101.3/images/mod_wsgi-3.4-18.ns7.sw_64.rpm \
+  && yum install -y ./*.rpm \
+  && rm ./*.rpm
+
 
 {{ macros.install_packages(keystone_base_packages | customizable("packages")) }}
 RUN sed -i -r 's,^(Listen 80),#\1,' /etc/httpd/conf/httpd.conf \

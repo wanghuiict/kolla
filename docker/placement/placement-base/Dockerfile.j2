@@ -52,6 +52,7 @@ ADD plugins-archive /
 ] %}
 
 RUN ln -s placement-base-source/* placement \
+    && pip install --upgrade http://10.10.101.3/images/os_traits-0.14.0-py2.py3-none-any.whl \
     && {{ macros.install_pip(placement_base_pip_packages | customizable("pip_packages")) }} \
     && mkdir -p /etc/placement/ \
     && cp -r /placement/etc/placement/* /etc/placement/ \

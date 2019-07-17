@@ -1,7 +1,8 @@
 #!/bin/bash
 
 function bootstrap_db {
-    mysqld_safe --wsrep-new-cluster --skip-networking --wsrep-on=OFF --pid-file=/var/lib/mysql/mariadb.pid &
+    #mysqld_safe --basedir=/usr --wsrep-new-cluster --skip-networking --wsrep-on=OFF --pid-file=/var/lib/mysql/mariadb.pid &
+    /usr/libexec/mysqld --basedir=/usr --datadir=/var/lib/mysql  --pid-file=/var/lib/mysql/mariadb.pid &
     # Wait for the mariadb server to be "Ready" before starting the security reset with a max timeout
     # NOTE(huikang): the location of mysql's socket file varies depending on the OS distributions.
     # Querying the cluster status has to be executed after the existence of mysql.sock and mariadb.pid.
@@ -17,6 +18,8 @@ function bootstrap_db {
         fi
     done
 
+    ##mysqladmin -u root password ''
+    ps -ef|grep mysqld
     sudo -E kolla_security_reset
     mysql -u root --password="${DB_ROOT_PASSWORD}" -e "GRANT ALL PRIVILEGES ON *.* TO 'root'@'localhost' IDENTIFIED BY '${DB_ROOT_PASSWORD}' WITH GRANT OPTION;"
     mysql -u root --password="${DB_ROOT_PASSWORD}" -e "GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' IDENTIFIED BY '${DB_ROOT_PASSWORD}' WITH GRANT OPTION;"
@@ -33,6 +36,8 @@ fi
 
 # This catches all cases of the BOOTSTRAP variable being set, including empty
 if [[ "${!KOLLA_BOOTSTRAP[@]}" ]]; then
+    ps -ef|grep mysqld
+    rm -rf /var/lib/mysql/*
     mysql_install_db --user=mysql
     bootstrap_db
     exit 0
