@@ -49,7 +49,7 @@ RUN truncate -s 0 /etc/apache2/ports.conf
         {% endif %}
 
 RUN yum install -y wget && \
-  wget http://10.10.101.3/images/mod_wsgi-3.4-18.ns7.sw_64.rpm && \
+  wget http://10.10.101.3/images/sw_64/mod_wsgi-3.4-18.ns7.sw_64.rpm && \
   yum install -y ./*.rpm && \
   rm ./*.rpm
 

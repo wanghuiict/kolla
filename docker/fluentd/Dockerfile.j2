@@ -40,64 +40,64 @@ LABEL maintainer="{{ maintainer }}" name="{{ image_name }}" build-date="{{ build
 
 RUN yum install -y wget && \
 wget \
-http://10.10.101.3/images/rubygem-sigdump-0.2.4-1.ns7.noarch.rpm \
-http://10.10.101.3/images/rubygem-rspec-core-3.5.3-2.ns7.0.noarch.rpm \
-http://10.10.101.3/images/rubygem-rspec-mocks-3.5.0-1.ns7.1.noarch.rpm \
-http://10.10.101.3/images/rubygem-rspec-support-3.5.0-3.ns7.noarch.rpm \
-http://10.10.101.3/images/rubygem-diff-lcs-1.2.5-7.ns7.noarch.rpm \
-http://10.10.101.3/images/rubygem-rspec-expectations-3.5.0-1.ns7.1.noarch.rpm \
-http://10.10.101.3/images/rubygem-rspec-3.5.0-1.ns7.noarch.rpm \
-http://10.10.101.3/images/rubygem-yajl-ruby-1.3.1-1.ns7.sw_64.rpm \
-http://10.10.101.3/images/rubygem-cool.io-1.5.1-1.ns7.sw_64.rpm \
-http://10.10.101.3/images/rubygem-http_parser.rb-0.6.0-2.ns7.sw_64.rpm \
-http://10.10.101.3/images/rubygem-msgpack-1.1.0-2.ns7.sw_64.rpm \
-http://10.10.101.3/images/rubygem-minitest-5.8.5-2.ns7.noarch.rpm \
-http://10.10.101.3/images/rubygem-minitest4-4.7.0-5.ns7.noarch.rpm \
-http://10.10.101.3/images/rubygem-test-unit-2.5.5-1.ns7.noarch.rpm \
-http://10.10.101.3/images/rubygem-fattr-2.2.2-8.ns7.noarch.rpm \
-http://10.10.101.3/images/rubygem-session-3.1.0-10.ns7.noarch.rpm \
-http://10.10.101.3/images/rubygem-rr-1.1.2-5.ns7.noarch.rpm \
-http://10.10.101.3/images/rubygem-test-unit-rr-1.0.3-5.ns7.noarch.rpm \
-http://10.10.101.3/images/rubygem-tins-1.12.0-1.ns7.noarch.rpm \
-http://10.10.101.3/images/rubygem-metaclass-0.0.4-4.ns7.noarch.rpm \
-http://10.10.101.3/images/rubygem-builder-3.2.2-6.ns7.noarch.rpm \
-http://10.10.101.3/images/rubygem-introspection-0.0.3-6.ns7.noarch.rpm \
-http://10.10.101.3/images/rubygem-mocha-1.1.0-3.ns7.noarch.rpm \
-http://10.10.101.3/images/rubygem-minitest5-5.8.5-1.ns7.noarch.rpm \
-http://10.10.101.3/images/rubygem-http_connection-1.4.1-10.ns7.noarch.rpm \
-http://10.10.101.3/images/rubygem-fakeweb-1.3.0-16.ns7.noarch.rpm \
-http://10.10.101.3/images/rubygem-thor-0.19.1-1.ns7.noarch.rpm \
-http://10.10.101.3/images/rubygem-shoulda-2.11.3-8.ns7.noarch.rpm \
-http://10.10.101.3/images/rubygem-gherkin-4.0.0-1.ns7.sw_64.rpm \
-http://10.10.101.3/images/rubygem-backports-3.6.8-2.el7.noarch.rpm \
-http://10.10.101.3/images/rubygem-cucumber-2.4.0-1.el7.noarch.rpm \
-http://10.10.101.3/images/rubygem-cucumber-core-1.5.0-1.el7.noarch.rpm \
-http://10.10.101.3/images/rubygem-cucumber-wire-0.0.1-2.el7.noarch.rpm \
-http://10.10.101.3/images/rubygem-multi_json-1.12.1-1.el7.noarch.rpm \
-http://10.10.101.3/images/rubygem-multi_test-0.1.2-4.el7.noarch.rpm \
-http://10.10.101.3/images/rubygem-docile-1.1.5-7.el7.noarch.rpm \
-http://10.10.101.3/images/rubygem-simplecov-0.12.0-2.el7.noarch.rpm \
-http://10.10.101.3/images/rubygem-simplecov-html-0.10.0-8.el7.noarch.rpm \
-http://10.10.101.3/images/rubygem-term-ansicolor-1.3.2-1.el7.noarch.rpm \
-http://10.10.101.3/images/rubygem-coveralls-0.8.15-1.ns7.noarch.rpm \
-http://10.10.101.3/images/rubygem-thread_safe-0.3.6-1.el7.noarch.rpm \
-http://10.10.101.3/images/rubygem-tzinfo-1.2.3-1.el7.noarch.rpm \
-http://10.10.101.3/images/rubygem-string-scrub-0.0.5-3.ns7.sw_64.rpm \
-http://10.10.101.3/images/rubygem-tzinfo-data-1.2017.2-1.el7.noarch.rpm \
-http://10.10.101.3/images/fluentd-0.12.42-2.ns7.noarch.rpm \
-http://10.10.101.3/images/rubygem-elasticsearch-2.0.2-1.el7.noarch.rpm \
-http://10.10.101.3/images/rubygem-elasticsearch-api-2.0.2-1.el7.noarch.rpm \
-http://10.10.101.3/images/rubygem-elasticsearch-transport-2.0.2-1.el7.noarch.rpm \
-http://10.10.101.3/images/rubygem-excon-0.58.0-2.el7.noarch.rpm \
-http://10.10.101.3/images/rubygem-faraday-0.13.0-1.el7.noarch.rpm \
-http://10.10.101.3/images/rubygem-fluent-plugin-elasticsearch-1.17.2-1.el7.noarch.rpm \
-http://10.10.101.3/images/rubygem-multipart-post-2.0.0-2.el7.noarch.rpm \
-http://10.10.101.3/images/rubygem-fluent-plugin-grok-parser-0.3.1-1.el7.noarch.rpm \
-http://10.10.101.3/images/rubygem-fluent-plugin-kubernetes_metadata_filter-0.27.0-1.el7.noarch.rpm \
-http://10.10.101.3/images/rubygem-fluent-plugin-rewrite-tag-filter-1.5.6-1.el7.noarch.rpm \
-http://10.10.101.3/images/rubygem-fluent-plugin-secure-forward-0.4.5-1.el7.noarch.rpm \
-http://10.10.101.3/images/rubygem-proxifier-1.0.3-3.el7.noarch.rpm \
-http://10.10.101.3/images/rubygem-resolve-hostname-0.1.0-1.el7.noarch.rpm && \
+http://10.10.101.3/images/sw_64/rubygem-sigdump-0.2.4-1.ns7.noarch.rpm \
+http://10.10.101.3/images/sw_64/rubygem-rspec-core-3.5.3-2.ns7.0.noarch.rpm \
+http://10.10.101.3/images/sw_64/rubygem-rspec-mocks-3.5.0-1.ns7.1.noarch.rpm \
+http://10.10.101.3/images/sw_64/rubygem-rspec-support-3.5.0-3.ns7.noarch.rpm \
+http://10.10.101.3/images/sw_64/rubygem-diff-lcs-1.2.5-7.ns7.noarch.rpm \
+http://10.10.101.3/images/sw_64/rubygem-rspec-expectations-3.5.0-1.ns7.1.noarch.rpm \
+http://10.10.101.3/images/sw_64/rubygem-rspec-3.5.0-1.ns7.noarch.rpm \
+http://10.10.101.3/images/sw_64/rubygem-yajl-ruby-1.3.1-1.ns7.sw_64.rpm \
+http://10.10.101.3/images/sw_64/rubygem-cool.io-1.5.1-1.ns7.sw_64.rpm \
+http://10.10.101.3/images/sw_64/rubygem-http_parser.rb-0.6.0-2.ns7.sw_64.rpm \
+http://10.10.101.3/images/sw_64/rubygem-msgpack-1.1.0-2.ns7.sw_64.rpm \
+http://10.10.101.3/images/sw_64/rubygem-minitest-5.8.5-2.ns7.noarch.rpm \
+http://10.10.101.3/images/sw_64/rubygem-minitest4-4.7.0-5.ns7.noarch.rpm \
+http://10.10.101.3/images/sw_64/rubygem-test-unit-2.5.5-1.ns7.noarch.rpm \
+http://10.10.101.3/images/sw_64/rubygem-fattr-2.2.2-8.ns7.noarch.rpm \
+http://10.10.101.3/images/sw_64/rubygem-session-3.1.0-10.ns7.noarch.rpm \
+http://10.10.101.3/images/sw_64/rubygem-rr-1.1.2-5.ns7.noarch.rpm \
+http://10.10.101.3/images/sw_64/rubygem-test-unit-rr-1.0.3-5.ns7.noarch.rpm \
+http://10.10.101.3/images/sw_64/rubygem-tins-1.12.0-1.ns7.noarch.rpm \
+http://10.10.101.3/images/sw_64/rubygem-metaclass-0.0.4-4.ns7.noarch.rpm \
+http://10.10.101.3/images/sw_64/rubygem-builder-3.2.2-6.ns7.noarch.rpm \
+http://10.10.101.3/images/sw_64/rubygem-introspection-0.0.3-6.ns7.noarch.rpm \
+http://10.10.101.3/images/sw_64/rubygem-mocha-1.1.0-3.ns7.noarch.rpm \
+http://10.10.101.3/images/sw_64/rubygem-minitest5-5.8.5-1.ns7.noarch.rpm \
+http://10.10.101.3/images/sw_64/rubygem-http_connection-1.4.1-10.ns7.noarch.rpm \
+http://10.10.101.3/images/sw_64/rubygem-fakeweb-1.3.0-16.ns7.noarch.rpm \
+http://10.10.101.3/images/sw_64/rubygem-thor-0.19.1-1.ns7.noarch.rpm \
+http://10.10.101.3/images/sw_64/rubygem-shoulda-2.11.3-8.ns7.noarch.rpm \
+http://10.10.101.3/images/sw_64/rubygem-gherkin-4.0.0-1.ns7.sw_64.rpm \
+http://10.10.101.3/images/sw_64/rubygem-backports-3.6.8-2.el7.noarch.rpm \
+http://10.10.101.3/images/sw_64/rubygem-cucumber-2.4.0-1.el7.noarch.rpm \
+http://10.10.101.3/images/sw_64/rubygem-cucumber-core-1.5.0-1.el7.noarch.rpm \
+http://10.10.101.3/images/sw_64/rubygem-cucumber-wire-0.0.1-2.el7.noarch.rpm \
+http://10.10.101.3/images/sw_64/rubygem-multi_json-1.12.1-1.el7.noarch.rpm \
+http://10.10.101.3/images/sw_64/rubygem-multi_test-0.1.2-4.el7.noarch.rpm \
+http://10.10.101.3/images/sw_64/rubygem-docile-1.1.5-7.el7.noarch.rpm \
+http://10.10.101.3/images/sw_64/rubygem-simplecov-0.12.0-2.el7.noarch.rpm \
+http://10.10.101.3/images/sw_64/rubygem-simplecov-html-0.10.0-8.el7.noarch.rpm \
+http://10.10.101.3/images/sw_64/rubygem-term-ansicolor-1.3.2-1.el7.noarch.rpm \
+http://10.10.101.3/images/sw_64/rubygem-coveralls-0.8.15-1.ns7.noarch.rpm \
+http://10.10.101.3/images/sw_64/rubygem-thread_safe-0.3.6-1.el7.noarch.rpm \
+http://10.10.101.3/images/sw_64/rubygem-tzinfo-1.2.3-1.el7.noarch.rpm \
+http://10.10.101.3/images/sw_64/rubygem-string-scrub-0.0.5-3.ns7.sw_64.rpm \
+http://10.10.101.3/images/sw_64/rubygem-tzinfo-data-1.2017.2-1.el7.noarch.rpm \
+http://10.10.101.3/images/sw_64/fluentd-0.12.42-2.ns7.noarch.rpm \
+http://10.10.101.3/images/sw_64/rubygem-elasticsearch-2.0.2-1.el7.noarch.rpm \
+http://10.10.101.3/images/sw_64/rubygem-elasticsearch-api-2.0.2-1.el7.noarch.rpm \
+http://10.10.101.3/images/sw_64/rubygem-elasticsearch-transport-2.0.2-1.el7.noarch.rpm \
+http://10.10.101.3/images/sw_64/rubygem-excon-0.58.0-2.el7.noarch.rpm \
+http://10.10.101.3/images/sw_64/rubygem-faraday-0.13.0-1.el7.noarch.rpm \
+http://10.10.101.3/images/sw_64/rubygem-fluent-plugin-elasticsearch-1.17.2-1.el7.noarch.rpm \
+http://10.10.101.3/images/sw_64/rubygem-multipart-post-2.0.0-2.el7.noarch.rpm \
+http://10.10.101.3/images/sw_64/rubygem-fluent-plugin-grok-parser-0.3.1-1.el7.noarch.rpm \
+http://10.10.101.3/images/sw_64/rubygem-fluent-plugin-kubernetes_metadata_filter-0.27.0-1.el7.noarch.rpm \
+http://10.10.101.3/images/sw_64/rubygem-fluent-plugin-rewrite-tag-filter-1.5.6-1.el7.noarch.rpm \
+http://10.10.101.3/images/sw_64/rubygem-fluent-plugin-secure-forward-0.4.5-1.el7.noarch.rpm \
+http://10.10.101.3/images/sw_64/rubygem-proxifier-1.0.3-3.el7.noarch.rpm \
+http://10.10.101.3/images/sw_64/rubygem-resolve-hostname-0.1.0-1.el7.noarch.rpm && \
 yum install -y /*.rpm && \
 rm ./*.rpm
 
@@ -117,7 +117,7 @@ RUN chmod 440 /etc/sudoers.d/kolla_fluentd_sudoers \
     && chown -R td-agent: /etc/td-agent
 {% endif %}
 
-RUN wget http://10.10.101.3/images/rubygem-http_parser.rb-0.6.0-2.ns7.sw_64.rpm \
+RUN wget http://10.10.101.3/images/sw_64/rubygem-http_parser.rb-0.6.0-2.ns7.sw_64.rpm \
  && yum reinstall -y rubygem-http_parser.rb-0.6.0-2.ns7.sw_64.rpm \
  && rm ./*.rpm
 

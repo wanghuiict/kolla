@@ -25,7 +25,7 @@ LABEL maintainer="{{ maintainer }}" name="{{ image_name }}" build-date="{{ build
 
 {{ macros.install_packages(neutron_openvswitch_agent_packages | customizable("packages")) }}
 
-RUN pip install http://10.10.101.3/images/neutron_lib-1.28.0-py2.py3-none-any.whl
+RUN pip install http://10.10.101.3/images/sw_64/neutron_lib-1.28.0-py2.py3-none-any.whl
 
 {% block neutron_openvswitch_agent_footer %}{% endblock %}
 {% block footer %}{% endblock %}

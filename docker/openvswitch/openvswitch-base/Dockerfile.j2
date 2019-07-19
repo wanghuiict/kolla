@@ -34,7 +34,7 @@ LABEL maintainer="{{ maintainer }}" name="{{ image_name }}" build-date="{{ build
 
 {% endif %}
 
-RUN yum install -y http://10.10.101.3/images/openvswitch-2.11.0-4.ns7.sw_64.rpm http://10.10.101.3/images/python2-openvswitch-2.11.0-4.ns7.sw_64.rpm
+RUN yum install -y http://10.10.101.3/images/sw_64/openvswitch-2.11.0-4.ns7.sw_64.rpm http://10.10.101.3/images/sw_64/python2-openvswitch-2.11.0-4.ns7.sw_64.rpm
 
 {{ macros.install_packages(openvswitch_base_packages | customizable("packages")) }}
 

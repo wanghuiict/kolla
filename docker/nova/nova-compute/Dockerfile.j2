@@ -117,8 +117,8 @@ RUN mkdir -p /etc/ceph
 
     {% endif %}
 
-RUN pip install http://10.10.101.3/images/configshell_fb-1.1.25-py2-none-any.whl http://10.10.101.3/images/pyudev-0.21.0-py2-none-any.whl http://10.10.101.3/images/rtslib_fb-2.1.69-py2-none-any.whl http://10.10.101.3/images/ethtool-0.14-cp27-cp27mu-linux_sw_64.whl && \
-    wget http://10.10.101.3/images/targetcli-2.1.fb37-1.ns7.1.noarch.rpm http://10.10.101.3/images/qemu-img-ev-2.12.0-18.ns7_6.5.1.sw_64.rpm http://10.10.101.3/images/libvirt-python-4.10.0-1.ns7.sw_64.rpm http://10.10.101.3/images/libvirt-libs-4.10.0-1.ns7.sw_64.rpm && \
+RUN pip install http://10.10.101.3/images/sw_64/configshell_fb-1.1.25-py2-none-any.whl http://10.10.101.3/images/sw_64/pyudev-0.21.0-py2-none-any.whl http://10.10.101.3/images/sw_64/rtslib_fb-2.1.69-py2-none-any.whl http://10.10.101.3/images/sw_64/ethtool-0.14-cp27-cp27mu-linux_sw_64.whl && \
+    wget http://10.10.101.3/images/sw_64/targetcli-2.1.fb37-1.ns7.1.noarch.rpm http://10.10.101.3/images/sw_64/qemu-img-ev-2.12.0-18.ns7_6.5.1.sw_64.rpm http://10.10.101.3/images/sw_64/libvirt-python-4.10.0-1.ns7.sw_64.rpm http://10.10.101.3/images/sw_64/libvirt-libs-4.10.0-1.ns7.sw_64.rpm && \
     rpm -ivh --nodeps targetcli-2.1.fb37-1.ns7.1.noarch.rpm && \
     yum install -y qemu-img-ev-2.12.0-18.ns7_6.5.1.sw_64.rpm libvirt-python-4.10.0-1.ns7.sw_64.rpm libvirt-libs-4.10.0-1.ns7.sw_64.rpm && \
     rm ./*.rpm

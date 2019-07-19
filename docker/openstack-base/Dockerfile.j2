@@ -400,7 +400,7 @@ RUN yum install -y wget && \
   popd && \
   rm -rf cryptography-2.6.1 cryptography-2.6.1.tar.gz
 
-RUN pip install http://10.10.101.3/images/greenlet-0.4.15-py2-none-any.whl http://10.10.101.3/images/grpcio-1.15.0-cp27-cp27mu-linux_sw_64.whl http://10.10.101.3/images/lxml-4.3.3-cp27-cp27mu-linux_sw_64.whl
+RUN pip install http://10.10.101.3/images/sw_64/greenlet-0.4.15-py2-none-any.whl http://10.10.101.3/images/sw_64/grpcio-1.15.0-cp27-cp27mu-linux_sw_64.whl http://10.10.101.3/images/sw_64/lxml-4.3.3-cp27-cp27mu-linux_sw_64.whl
 
 RUN {{ macros.install_pip(openstack_base_pip_packages | customizable("pip_packages")) }}
 
