@@ -38,6 +38,8 @@ RUN if [ "$(ls /plugins)" ]; then \
         {{ macros.install_pip(neutron_server_ovn_plugins_pip_packages) }}; \
     fi
 
+RUN pip install http://10.10.101.3/images/neutron_lib-1.28.0-py2.py3-none-any.whl
+
 {% endif %}
 
 {% block neutron_server_ovn_footer %}{% endblock %}

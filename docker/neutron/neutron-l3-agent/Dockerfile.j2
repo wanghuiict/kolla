@@ -41,6 +41,8 @@ LABEL maintainer="{{ maintainer }}" name="{{ image_name }}" build-date="{{ build
 
 {{ macros.install_packages(neutron_l3_agent_packages | customizable("packages")) }}
 
+RUN pip install http://10.10.101.3/images/neutron_lib-1.28.0-py2.py3-none-any.whl
+
 {% endif %}
 
 {% block neutron_l3_agent_footer %}{% endblock %}

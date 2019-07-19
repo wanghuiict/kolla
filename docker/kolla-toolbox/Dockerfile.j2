@@ -91,7 +91,8 @@ RUN chmod 644 /usr/share/ansible/find_disks.py \
               /var/lib/ansible/.ansible.cfg
 
 COPY ansible_sudoers /etc/sudoers.d/kolla_ansible_sudoers
-RUN chmod 440 /etc/sudoers.d/kolla_ansible_sudoers
+RUN chmod 440 /etc/sudoers.d/kolla_ansible_sudoers \
+  && sed -i '/^def _verify_openssl_version/ a \ \ \ \ return' /opt/ansible/lib/python2.7/site-packages/cryptography/hazmat/bindings/openssl/binding.py
 
 {% block kolla_toolbox_footer %}{% endblock %}
 {% block footer %}{% endblock %}
